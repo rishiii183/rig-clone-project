@@ -45,7 +45,7 @@ const HeroSection = () => {
           No cloud. No limits.
         </h1>
         <p className="text-lg md:text-xl text-primary-foreground/70 max-w-lg mb-10 font-sans">
-          A complete coding agent that executes entirely on your machine. No API calls. No usage caps.
+          A secure AI infrastructure layer that executes entirely on your network. Zero data leaks. Full audit control.
         </p>
         <div className="flex flex-wrap gap-4 mt-6">
           <a href="#early-access" className="btn-rig">
