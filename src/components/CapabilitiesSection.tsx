@@ -1,16 +1,16 @@
 const capabilities = [
-  { num: "01", title: "Understands your architecture.", desc: "Builds a connected model of modules, dependencies, and relationships across files." },
-  { num: "02", title: "Tracks relationships, prevents breakage.", desc: "Edits that respect function contracts, type boundaries, and dependency graphs." },
-  { num: "03", title: "Strategizes before acting.", desc: "Explore → Plan → Execute workflows ensure steps are reasoned out before changes occur." },
-  { num: "04", title: "Executes complex coding workflows.", desc: "From refactors to test generation — coordinate tools, edits, search, and commands." },
-  { num: "05", title: "Isolates agent sandboxes.", desc: "Each agent runs in its own workspace so experiments are safe and changes stay isolated." },
-  { num: "06", title: "Runs at full speed.", desc: "Custom Rust inference engine optimized for CUDA and Metal — up to 144 tok/s on consumer hardware." },
+  { num: "01", title: "Inspects every packet.", desc: "Analyzes prompts and completions in real-time, identifying sensitive data before it leaves your machine." },
+  { num: "02", title: "Scrubs PII automatically.", desc: "Detects and redacts emails, API keys, and names using a local high-performance inspection engine." },
+  { num: "03", title: "Prevents prompt injections.", desc: "Deep-scans incoming instructions to block malicious redirects or jailbreak attempts at the edge." },
+  { num: "04", title: "Enforces custom policies.", desc: "Set granular rules for which models can be accessed and what data types are permitted for export." },
+  { num: "05", title: "Encrypts audit trails.", desc: "Generates a tamper-proof forensic log of all AI interactions, stored locally and synced securely." },
+  { num: "06", title: "Hardened Data Plane.", desc: "A security-first architecture designed to act as a one-way valve: insights come in, secrets stay in." },
 ];
 
 const stats = [
-  { label: "Latency", value: "0ms", sub: "No round-trip required" },
+  { label: "Latency", value: "0ms", sub: "Real-time Guardrail" },
   { label: "Privacy", value: "100%", sub: "Air-gapped by design" },
-  { label: "Cost / Token", value: "$0", sub: "Your GPU, your tokens" },
+  { label: "Security / Node", value: "MAX", sub: "Hardened infrastructure" },
   { label: "Uptime", value: "Local", sub: "No dependency on cloud" },
 ];
 
@@ -21,7 +21,7 @@ const CapabilitiesSection = () => {
         <div className="text-center mb-16">
           <span className="section-label mb-6 block">Capabilities</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-foreground">
-            Your machine, unleashed.
+            Your data, secured.
           </h2>
         </div>
 
