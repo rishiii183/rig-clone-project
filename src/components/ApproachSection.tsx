@@ -18,84 +18,84 @@ const steps = [
 
 const ApproachSection = () => {
   return (
-    <section id="approach" className="bg-background py-24 px-6 md:px-12">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="section-label mb-6 block">Our Approach</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-foreground">
+    <section id="approach" className="bg-[#0a0a0a] py-32 px-6 md:px-12 border-t border-white/5 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="mb-24">
+          <span className="font-mono text-[10px] tracking-[0.3em] text-[#ED462D] uppercase mb-4 block">Our Approach</span>
+          <h2 className="text-5xl md:text-7xl lg:text-[100px] font-black leading-[0.95] tracking-[-0.04em] text-white">
             Purpose beats scale.
           </h2>
-          <p className="text-muted-foreground font-sans mt-4 max-w-2xl mx-auto">
-            A closed system — model, context, tools, and inference — engineered together for one job: real coding work.
-          </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="grid lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {steps.map((s) => (
-            <div key={s.num} className="flex gap-6 md:gap-10 items-start p-8 rounded-xl border border-border bg-card">
-              <span className="font-mono text-sm text-primary shrink-0">Step {s.num}</span>
+            <div key={s.num} className="p-10 md:p-14 bg-[#0a0a0a] hover:bg-white/[0.02] transition-colors group">
+              <span className="font-mono text-[9px] text-[#ED462D] uppercase tracking-[0.4em] font-bold block mb-10">CORE PHASE {s.num}</span>
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">{s.title}</h3>
-                <p className="text-sm text-muted-foreground font-sans leading-relaxed max-w-2xl">{s.desc}</p>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight tracking-tight group-hover:text-[#ED462D] transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/40 font-sans leading-relaxed">{s.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Comparison bars */}
-        <div className="mt-20 grid md:grid-cols-2 gap-12">
+        {/* Comparison section */}
+        <div className="mt-32 grid lg:grid-cols-2 gap-20">
           <div>
-            <h4 className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-6">Parameters dedicated to code</h4>
-            <div className="space-y-4">
+            <div className="flex items-center gap-4 mb-10">
+                <div className="w-10 h-[1px] bg-[#ED462D]" />
+                <h4 className="font-mono text-[10px] text-white uppercase tracking-[0.3em]">Code Parameter Efficiency</h4>
+            </div>
+            <div className="space-y-12">
               <div>
-                <div className="flex justify-between font-mono text-xs mb-1">
-                  <span className="text-foreground">Foretyx</span>
-                  <span className="text-primary">100%</span>
+                <div className="flex justify-between font-mono text-[10px] mb-4">
+                  <span className="text-white uppercase tracking-widest">Foretyx Architecture</span>
+                  <span className="text-[#ED462D]">100% OPTIMIZED</span>
                 </div>
-                <div className="h-3 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary rounded-full" style={{ width: "100%" }} />
+                <div className="h-2 bg-white/5 relative">
+                  <div className="h-full bg-[#ED462D] shadow-[0_0_15px_#ED462D]" style={{ width: "100%" }} />
+                  {/* Tick marks */}
+                  <div className="absolute inset-0 flex justify-between pointer-events-none">
+                    {[...Array(11)].map((_, i) => (
+                        <div key={i} className="w-px h-full bg-[#0a0a0a]/50" />
+                    ))}
+                  </div>
                 </div>
               </div>
               <div>
-                <div className="flex justify-between font-mono text-xs mb-1">
-                  <span className="text-muted-foreground">Most AI models</span>
-                  <span className="text-muted-foreground">~15–20%</span>
+                <div className="flex justify-between font-mono text-[10px] mb-4">
+                  <span className="text-white/40 uppercase tracking-widest">Generalized Models</span>
+                  <span className="text-white/20">~18% RELEVANT</span>
                 </div>
-                <div className="h-3 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-muted-foreground/30 rounded-full" style={{ width: "18%" }} />
+                <div className="h-2 bg-white/5">
+                  <div className="h-full bg-white/10" style={{ width: "18%" }} />
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-6">Model size (memory required)</h4>
-            <div className="space-y-4">
+            <div className="flex items-center gap-4 mb-10">
+                <div className="w-10 h-[1px] bg-[#ED462D]" />
+                <h4 className="font-mono text-[10px] text-white uppercase tracking-[0.3em]">In-Memory Footprint</h4>
+            </div>
+            <div className="space-y-12">
               <div>
-                <div className="flex justify-between font-mono text-xs mb-1">
-                  <span className="text-muted-foreground">Cloud models</span>
-                  <span className="text-muted-foreground">200+ GB</span>
+                <div className="flex justify-between font-mono text-[10px] mb-4">
+                  <span className="text-white uppercase tracking-widest">Foretyx SLM</span>
+                  <span className="text-[#ED462D]">8 GB (LOCAL)</span>
                 </div>
-                <div className="h-3 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-muted-foreground/30 rounded-full" style={{ width: "100%" }} />
+                <div className="h-2 bg-white/5">
+                  <div className="h-full bg-[#ED462D] shadow-[0_0_15px_#ED462D]" style={{ width: "8%" }} />
                 </div>
               </div>
               <div>
-                <div className="flex justify-between font-mono text-xs mb-1">
-                  <span className="text-muted-foreground">Open source</span>
-                  <span className="text-muted-foreground">28–140 GB</span>
+                <div className="flex justify-between font-mono text-[10px] mb-4">
+                  <span className="text-white/40 uppercase tracking-widest">Industry Standard</span>
+                  <span className="text-white/20">200+ GB (CLOUD)</span>
                 </div>
-                <div className="h-3 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-muted-foreground/30 rounded-full" style={{ width: "50%" }} />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between font-mono text-xs mb-1">
-                  <span className="text-foreground">Foretyx</span>
-                  <span className="text-primary">8 GB</span>
-                </div>
-                <div className="h-3 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary rounded-full" style={{ width: "4%" }} />
+                <div className="h-2 bg-white/5">
+                  <div className="h-full bg-white/10" style={{ width: "100%" }} />
                 </div>
               </div>
             </div>

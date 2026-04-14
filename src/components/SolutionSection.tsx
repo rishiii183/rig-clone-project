@@ -9,49 +9,55 @@ const features = [
 
 const SolutionSection = () => {
   return (
-    <section className="bg-card py-24 px-6 md:px-12">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="section-label mb-6 block">Introducing Foretyx</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-foreground">
+    <section className="bg-[#0a0a0a] py-32 px-6 md:px-12 border-t border-white/5">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="mb-24">
+          <span className="font-mono text-[10px] tracking-[0.3em] text-[#ED462D] uppercase mb-4 block">Introducing Foretyx</span>
+          <h2 className="text-5xl md:text-7xl lg:text-[100px] font-black leading-[0.95] tracking-[-0.04em] text-white">
             Everything local.
             <br />
-            Own your AI.
+            <span className="text-white/40">Own your AI.</span>
           </h2>
-          <p className="text-muted-foreground font-sans mt-4 max-w-xl mx-auto">
-            A complete AI coding agent running entirely on your own hardware. No usage limits. No cloud dependency.
-          </p>
         </div>
 
-        {/* Diagram placeholder */}
-        <div className="rounded-xl border border-border bg-background p-8 mb-16">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="text-center p-6 rounded-lg border border-border bg-card flex-1">
-              <div className="font-mono text-xs text-primary mb-2 uppercase tracking-wider">Your Machine</div>
-              <div className="font-mono text-sm text-foreground">✓ Foretyx model active</div>
-              <div className="font-mono text-xs text-muted-foreground mt-1">GPU · Index · Model</div>
-              <div className="text-xs text-primary mt-2">Response &lt;300ms</div>
+        {/* Diagram */}
+        <div className="p-[1px] bg-white/10 mb-20" style={{ clipPath: 'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)' }}>
+          <div className="bg-[#0f0f0f] p-12 md:p-20 flex flex-col md:flex-row items-center justify-center gap-12 overflow-hidden relative" style={{ clipPath: 'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)' }}>
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none scanlines" />
+            
+            <div className="text-center p-8 border border-[#ED462D]/30 bg-[#ED462D]/5 flex-1 relative group">
+              <div className="font-mono text-[10px] text-[#ED462D] mb-4 uppercase tracking-[0.2em]">Local Engine</div>
+              <div className="font-mono text-xl text-white font-bold mb-2">Node Locked</div>
+              <div className="font-mono text-xs text-white/40">GPU Inference · Context Graph</div>
+              <div className="text-[10px] text-[#ED462D] mt-6 font-mono tracking-widest animate-pulse">STATUS: ACTIVE</div>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <div className="w-16 h-px bg-destructive" />
-              <span className="font-mono text-[10px] text-destructive uppercase">Severed</span>
-              <div className="w-16 h-px bg-destructive" />
+
+            <div className="flex flex-col items-center gap-4 py-8">
+              <div className="w-24 h-[1px] bg-[#ED462D] relative group">
+                <div className="absolute inset-0 bg-[#ED462D] animate-ping opacity-20" />
+              </div>
+              <span className="font-mono text-[9px] text-[#ED462D] uppercase tracking-[0.4em] font-bold">Connection Severed</span>
+              <div className="w-24 h-[1px] bg-[#ED462D]" />
             </div>
-            <div className="text-center p-6 rounded-lg border border-border bg-muted/50 flex-1 opacity-40">
-              <div className="font-mono text-xs text-muted-foreground mb-2 uppercase tracking-wider">Cloud Servers</div>
-              <div className="font-mono text-sm text-muted-foreground line-through">Telemetry</div>
-              <div className="font-mono text-xs text-muted-foreground mt-1">Blocked</div>
+
+            <div className="text-center p-8 border border-white/5 bg-white/5 flex-1 opacity-20 filter grayscale">
+              <div className="font-mono text-[10px] text-white/40 mb-4 uppercase tracking-[0.2em]">External Cloud</div>
+              <div className="font-mono text-xl text-white/40 font-bold mb-2">Data Center</div>
+              <div className="font-mono text-xs text-white/20">Telemetry · API Calls</div>
+              <div className="text-[10px] text-white/20 mt-6 font-mono tracking-widest">STATUS: BLOCKED</div>
             </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
           {features.map((f) => (
-            <div key={f.label} className="p-6 rounded-lg border border-border bg-background">
-              <f.icon className="w-5 h-5 text-primary mb-4" />
-              <span className="font-mono text-xs text-primary uppercase tracking-wider block mb-2">{f.label}</span>
-              <h3 className="text-lg font-bold text-foreground mb-2">{f.title}</h3>
-              <p className="text-sm text-muted-foreground font-sans leading-relaxed">{f.desc}</p>
+            <div key={f.label} className="p-10 bg-[#0a0a0a] hover:bg-white/[0.02] transition-colors group">
+              <f.icon className="w-5 h-5 text-[#ED462D] mb-8 group-hover:scale-110 transition-transform" />
+              <div className="flex justify-between items-start mb-4">
+                <span className="font-mono text-[9px] text-[#ED462D] uppercase tracking-[0.2em] font-bold">{f.label}</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4 tracking-tight">{f.title}</h3>
+              <p className="text-sm text-white/40 font-sans leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>
