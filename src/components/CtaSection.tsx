@@ -22,7 +22,7 @@ const CtaSection = () => {
           Break free from big AI
         </h2>
         <p className="text-muted-foreground font-sans mb-10">
-          Join the waitlist and be among the first to run Foretyx on your own machine.
+          Request early access to deploy Foretyx on your own infrastructure.
         </p>
 
         {!submitted ? (
@@ -39,7 +39,7 @@ const CtaSection = () => {
               type="submit"
               className="btn-rig"
             >
-              Join Waitlist
+              Request Early Access
             </button>
           </form>
         ) : (
