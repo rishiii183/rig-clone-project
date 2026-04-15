@@ -1,17 +1,41 @@
 const capabilities = [
-  { num: "01", title: "Inspects every packet.", desc: "Analyzes prompts and completions in real-time, identifying sensitive data before it leaves your machine." },
-  { num: "02", title: "Scrubs PII automatically.", desc: "Detects and redacts emails, API keys, and names using a local high-performance inspection engine." },
-  { num: "03", title: "Prevents prompt injections.", desc: "Deep-scans incoming instructions to block malicious redirects or jailbreak attempts at the edge." },
-  { num: "04", title: "Enforces custom policies.", desc: "Set granular rules for which models can be accessed and what data types are permitted for export." },
-  { num: "05", title: "Encrypts audit trails.", desc: "Generates a tamper-proof forensic log of all AI interactions, stored locally and synced securely." },
-  { num: "06", title: "Hardened Data Plane.", desc: "A security-first architecture designed to act as a one-way valve: insights come in, secrets stay in." },
+  { 
+    num: "01", 
+    title: "Intercepts every prompt.", 
+    desc: "Every employee prompt to any external LLM passes through the Foretyx sidecar before it leaves the device. Nothing bypasses inspection. The system fails closed — if the sidecar is down, the request is blocked, not passed through." 
+  },
+  { 
+    num: "02", 
+    title: "Scrubs 20+ PII entity types.", 
+    desc: "Detects and redacts names, emails, phone numbers, Aadhaar, PAN, GSTIN, Voter ID, IFSC codes, Driving License numbers, API keys, crypto wallet addresses, and more — using a Presidio-powered local detection engine." 
+  },
+  { 
+    num: "03", 
+    title: "Blocks prompt injections.", 
+    desc: "An ONNX DistilBERT model scores every prompt for injection risk in real time. High-confidence adversarial inputs are blocked before reaching the model. Fails closed — ambiguous cases are blocked, not passed." 
+  },
+  { 
+    num: "04", 
+    title: "Enforces your org's policies.", 
+    desc: "Admins define rules in the Control Plane — which LLMs employees can access, what data types are forbidden, which teams have exceptions. Rules are pushed to every sidecar instantly via WebSocket." 
+  },
+  { 
+    num: "05", 
+    title: "Logs metadata, never content.", 
+    desc: "Every interaction generates a structured metadata event: entity types detected, injection score, policy decision, timestamp, and device ID. Synced to the Control Plane. Raw prompt content never stored anywhere." 
+  },
+  { 
+    num: "06", 
+    title: "Built for Indian compliance.", 
+    desc: "The only AI security gateway with native recognition of Indian PII — Aadhaar, PAN card, GSTIN, IFSC, Driving Licence, Voter ID, UPI IDs. Designed for DPDP Act compliance from the ground up." 
+  },
 ];
 
 const stats = [
-  { label: "Latency", value: "0ms", sub: "Real-time Guardrail" },
+  { label: "Latency", value: "<200ms", sub: "Full guard pipeline" },
   { label: "Privacy", value: "100%", sub: "Air-gapped by design" },
-  { label: "Security / Node", value: "MAX", sub: "Hardened infrastructure" },
-  { label: "Uptime", value: "Local", sub: "No dependency on cloud" },
+  { label: "PII Recall", value: "99.9%", sub: "Target SLA" },
+  { label: "Uptime", value: "Local", sub: "No cloud dependency" },
 ];
 
 const CapabilitiesSection = () => {
@@ -25,12 +49,21 @@ const CapabilitiesSection = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 px-4">
           {capabilities.map((c) => (
-            <div key={c.num} className="p-6 rounded-lg border border-border bg-background group hover:border-primary/30 transition-colors">
-              <span className="font-mono text-xs text-primary mb-4 block">[ {c.num} ]</span>
-              <h3 className="text-lg font-bold text-foreground mb-2">{c.title}</h3>
-              <p className="text-sm text-muted-foreground font-sans leading-relaxed">{c.desc}</p>
+            <div key={c.num} className="capability-card-parent h-full">
+              <div className="capability-card p-10 h-full flex flex-col justify-end">
+                <div className="capability-num-box">[ {c.num} ]</div>
+                
+                <div className="capability-content">
+                  <h3 className="capability-title text-2xl font-bold text-white mb-4 tracking-tight leading-tight">
+                    {c.title}
+                  </h3>
+                  <p className="capability-desc text-[13px] text-white/40 font-sans leading-relaxed">
+                    {c.desc}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

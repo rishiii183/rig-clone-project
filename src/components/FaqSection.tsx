@@ -4,27 +4,35 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "What is Foretyx?",
-    a: "Foretyx is a local-first AI coding assistant that runs entirely on your machine using a custom model and Rust inference engine optimized for Apple Silicon. Zero telemetry, no API calls, no usage caps.",
+    a: "Foretyx is an on-device AI prompt security gateway — a sidecar middleware that sits between your employees and any external LLM. It scrubs PII, detects prompt injections, and enforces your organisation's AI usage policies entirely on your own infrastructure. No sensitive data leaves unprotected.",
   },
   {
-    q: "What model does Foretyx use?",
-    a: "A custom-trained model based on an open-source foundation, extensively post-trained to work with Foretyx's agent harness, context engine, and tools.",
+    q: "How is Foretyx different from a cloud AI gateway?",
+    a: "Cloud gateways route your prompts through a third-party server to inspect them — meaning your raw data still leaves your network. Foretyx does everything locally, on the employee's own machine. The placeholder map — the key that links scrubbed tokens to real data — never leaves the device. This is an architectural difference, not a marketing claim.",
   },
   {
-    q: "What are the hardware requirements?",
-    a: "Apple Silicon M2 or later with at least 16GB RAM. Windows and Linux support coming soon.",
+    q: "What LLMs does Foretyx support?",
+    a: "Foretyx is model-agnostic. It works with any external LLM your team uses: OpenAI, Google Gemini, Anthropic Claude, Mistral, Cohere, or your own self-hosted model. The sidecar sits in front of whatever your employees are using, regardless of the provider.",
   },
   {
-    q: "How does it compare to cloud models?",
-    a: "Early tests indicate Foretyx will be on par with state-of-the-art models thanks to its specialized context engine and focused training pipeline.",
+    q: "What are the hardware and deployment requirements?",
+    a: "The Foretyx sidecar is lightweight and runs on standard enterprise hardware — Windows, macOS, and Linux. PII detection and the ONNX injection model are optimised for CPU inference. No GPU is required. The Control Plane is a centrally managed service.",
+  },
+  {
+    q: "How does it handle Indian compliance requirements?",
+    a: "Foretyx was built with Indian PII as a first-class concern. It natively detects Aadhaar numbers, PAN cards, GSTIN, IFSC codes, Voter IDs, Driving Licence numbers, and UPI IDs — entity types that standard Western tools miss entirely. This makes Foretyx directly applicable to India's DPDP Act requirements.",
+  },
+  {
+    q: "What data does the Control Plane receive?",
+    a: "Only structured metadata — never raw prompts or PII. Each interaction sends: a timestamp, the device and user ID, which entity types were detected (not the actual values), the injection risk score, which policy was triggered, and the action taken (allowed / blocked / redacted). Raw content stays on the device.",
   },
   {
     q: "How will Foretyx be priced?",
-    a: "Flat monthly or annual subscription — completely unlimited, completely offline.",
+    a: "We are in early access and finalising enterprise pricing. Expected model: per-seat or per-deployment with no per-query costs. Get in touch to discuss your organisation's scale and requirements.",
   },
   {
-    q: "When will Foretyx be available?",
-    a: "Rolling out to the waitlist in Q2 2026 with a broader release later this year.",
+    q: "When can we deploy Foretyx?",
+    a: "We are actively onboarding early design partners and enterprise pilots. Join the early access programme to be among the first organisations to deploy Foretyx in production.",
   },
 ];
 

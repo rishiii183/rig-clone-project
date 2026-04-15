@@ -35,25 +35,25 @@ const ProblemSection = () => {
       num: "001",
       label: "DATA LEAKAGE",
       title: "They see your secrets.",
-      desc: "Every prompt. Every API key. Every PII. It flows through cloud infrastructure you don’t own—leaving your most sensitive intellectual property exposed to third-party logs.",
+      desc: "Every time an employee pastes a customer record, contract, or Aadhaar number into ChatGPT — that data permanently leaves your network. Third-party logs capture it, store it, and train on it. You have no visibility, no control, and no way to audit what was exposed.",
     },
     {
       num: "002",
       label: "COMPLIANCE GAPS",
       title: "They bypass your rules.",
-      desc: "Shadow AI, unmonitored prompts, and zero visibility. Just when you need a paper trail for audit, the cloud model hides the \"how\" and \"where\" behind a black box.",
+      desc: "Shadow AI, unmonitored prompts, and zero policy enforcement. Under India's DPDP Act, GDPR, and HIPAA — your organisation is liable for data your employees unknowingly expose. The cloud LLM gives you no paper trail, no audit log, and no chain of custody.",
     },
     {
       num: "003",
       label: "VULNERABILITY RISKS",
       title: "They invite the injection.",
-      desc: "Without a local guardrail, malicious prompts and hidden injections reach your core systems. They offer the model; they don't offer the shield. You’re paying for the tool, but bearing the risk.",
+      desc: "Without a local guardrail, adversarial prompt injections reach your core systems unchecked. Malicious inputs can exfiltrate sensitive data, bypass access controls, or turn your own AI workflows into attack vectors. The cloud provides the model. You bear the risk.",
     },
     {
       num: "004",
       label: "SOVEREIGNTY LOSS",
       title: "They hold your data hostage.",
-      desc: "Every interaction makes a round trip across the open web. You lose the \"Right to Erasure\" the moment the packet leaves your network. Your security shouldn't depend on a cloud provider's promise.",
+      desc: "Every interaction makes a round trip across the open internet. You lose the right to erasure the moment the packet leaves your network. Your data security cannot depend on a cloud provider's terms of service, SLA, or goodwill.",
     },
   ];
 

@@ -17,12 +17,14 @@ const CtaSection = () => {
         <div className="w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
-          Break free from big AI
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 tracking-tighter leading-[1.1]">
+          Enterprise AI is moving fast.
+          <br />
+          Your data governance isn't keeping up.
         </h2>
-        <p className="text-muted-foreground font-sans mb-10">
-          Request early access to deploy Foretyx on your own infrastructure.
+        <p className="text-muted-foreground font-sans text-lg max-w-xl mx-auto mb-12">
+          Join the early access programme and be among the first enterprises to deploy Foretyx — before your next compliance audit asks where your prompts went.
         </p>
 
         {!submitted ? (

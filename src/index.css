@@ -195,19 +195,134 @@
   50% { opacity: 1; }
 }
 
-.animate-marquee {
-  animation: marquee 25s linear infinite;
+/* --- 3D Capability Cards (Uiverse-inspired) --- */
+.capability-card-parent {
+  perspective: 1200px;
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
+.capability-card {
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  position: relative;
+  overflow: visible;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+.capability-card:hover {
+  transform: rotate3d(0.5, 1, 0, 15deg);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(173, 225, 237, 0.3);
 }
 
-@keyframes shimmer {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
+.capability-content {
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 2;
+}
+
+.capability-num-box {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background: #ADE1ED;
+  color: #0a0a0a;
+  padding: 8px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 4px;
+  transform: translate3d(0px, 0px, 60px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+}
+
+.capability-card:hover .capability-num-box {
+  transform: translate3d(5px, -5px, 80px);
+  background: #fff;
+}
+
+.capability-title {
+  display: block;
+  transform: translate3d(0px, 0px, 40px);
+  transition: all 0.5s ease;
+}
+
+.capability-card:hover .capability-title {
+  transform: translate3d(0px, 0px, 70px);
+}
+
+.capability-desc {
+  display: block;
+  transform: translate3d(0px, 0px, 20px);
+  transition: all 0.5s ease;
+}
+
+.capability-card:hover .capability-desc {
+  transform: translate3d(0px, 0px, 50px);
+}
+
+/* --- Custom Early Access Button (Uiverse) --- */
+.btn-early-access {
+  --clr: #0a0a0a;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--clr);
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  padding-left: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-icon-wrapper {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  color: var(--clr);
+  background-color: #ADE1ED;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.btn-early-access:hover {
+  background-color: #000;
+  transform: translateY(-1px);
+}
+
+.btn-early-access:hover .btn-icon-wrapper {
+  color: #000;
+  background-color: #fff;
+}
+
+.btn-icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, -100%);
+}
+
+.btn-early-access:hover .btn-icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, 100%);
+}
+
+.btn-early-access:hover .btn-icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
 }
