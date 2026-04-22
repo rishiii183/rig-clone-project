@@ -1,13 +1,42 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const CtaSection = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (!email) return;
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const { error: supabaseError } = await supabase
+        .from("waitlist")
+        .insert([{ email }]);
+
+      if (supabaseError) {
+        if (supabaseError.code === "23505") {
+          // Duplicate email
+          setError("You're already on the list!");
+        } else {
+          setError("Something went wrong. Please try again.");
+          console.error("Supabase error:", supabaseError);
+        }
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+      console.error("Network error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -35,13 +64,15 @@ const CtaSection = () => {
               placeholder="you@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-md bg-card border border-border font-mono text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              disabled={loading}
+              className="flex-1 px-4 py-3 rounded-md bg-card border border-border font-mono text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50"
             />
             <button
               type="submit"
-              className="btn-rig"
+              disabled={loading}
+              className="btn-rig disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Request Early Access
+              {loading ? "Submitting..." : "Request Early Access"}
             </button>
           </form>
         ) : (
@@ -50,9 +81,14 @@ const CtaSection = () => {
             <p className="text-muted-foreground font-sans text-sm mt-2">We'll reach out when it's your turn.</p>
           </div>
         )}
+
+        {error && (
+          <p className="text-red-400 font-mono text-sm mt-4">{error}</p>
+        )}
       </div>
     </section>
   );
 };
 
 export default CtaSection;
+
