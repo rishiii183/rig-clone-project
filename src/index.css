@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 191 63% 81%;
+    --primary-foreground: 220 100% 10%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 191 63% 75%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 191 63% 75%;
+
+    --radius: 0.5rem;
+
+    --hero-bg: 191 63% 81%;
+    --success: 142 71% 45%;
+    --warning: 48 96% 53%;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 8 85% 56%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 220 100% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-400;
+  }
+
+  .section-label {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .hero-section {
+    background-color: hsl(var(--hero-bg));
+  }
+
+  /* Button Design System */
+  .btn-base {
+    @apply font-mono text-sm px-6 py-3 rounded-md transition-all duration-300 ease-out inline-flex items-center justify-center gap-2 relative overflow-hidden;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-primary text-primary-foreground shadow-[0_4px_14px_0_hsl(var(--primary)/30%)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.23)] hover:scale-[1.02] active:scale-[0.98];
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, #8ecbe0 100%);
+  }
+
+  .btn-secondary {
+    @apply btn-base border border-border bg-transparent text-foreground hover:bg-muted hover:border-muted-foreground/30 active:scale-[0.98];
+  }
+
+  .btn-glass {
+    @apply btn-base border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground backdrop-blur-sm hover:bg-primary-foreground/15 hover:border-primary-foreground/40 active:scale-[0.98];
+  }
+
+  .btn-premium-white {
+    @apply btn-base bg-primary-foreground text-background shadow-lg hover:bg-white hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .nav-link {
+    @apply font-mono text-sm text-primary-foreground/80 hover:text-primary-foreground transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[1px] after:bg-primary-foreground after:transition-all hover:after:w-full;
+  }
+
+  /* RIG Design System */
+  .btn-rig {
+    @apply font-mono text-xs font-bold tracking-[0.05em] px-8 py-3 relative transition-all duration-200 uppercase;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+
+  .btn-rig::after {
+    content: '';
+    @apply absolute inset-0 opacity-[0.03] pointer-events-none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .btn-rig:hover {
+    @apply bg-foreground text-background scale-[1.02];
+  }
+
+  .btn-rig-outline {
+    @apply font-mono text-xs font-bold tracking-[0.05em] px-8 py-3 relative transition-all duration-200 uppercase;
+    background-color: transparent;
+    color: #1a1a1a;
+  }
+
+  .btn-rig-outline::before {
+    content: '';
+    @apply absolute inset-0;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  .btn-rig-outline:hover {
+    @apply scale-[1.02];
+    color: #000;
+  }
+
+  .btn-rig-outline:hover::before {
+    border-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .scanlines {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanlines::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.08),
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .hero-section {
+    background-color: hsl(var(--hero-bg));
+    @apply scanlines;
+  }
+}
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* --- 3D Capability Cards (Uiverse-inspired) --- */
+.capability-card-parent {
+  perspective: 1200px;
+}
+
+.capability-card {
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  position: relative;
+  overflow: visible;
+}
+
+.capability-card:hover {
+  transform: rotate3d(0.5, 1, 0, 15deg);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(173, 225, 237, 0.3);
+}
+
+.capability-content {
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 2;
+}
+
+.capability-num-box {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background: #ADE1ED;
+  color: #0a0a0a;
+  padding: 8px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 4px;
+  transform: translate3d(0px, 0px, 60px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+}
+
+.capability-card:hover .capability-num-box {
+  transform: translate3d(5px, -5px, 80px);
+  background: #fff;
+}
+
+.capability-title {
+  display: block;
+  transform: translate3d(0px, 0px, 40px);
+  transition: all 0.5s ease;
+}
+
+.capability-card:hover .capability-title {
+  transform: translate3d(0px, 0px, 70px);
+}
+
+.capability-desc {
+  display: block;
+  transform: translate3d(0px, 0px, 20px);
+  transition: all 0.5s ease;
+}
+
+.capability-card:hover .capability-desc {
+  transform: translate3d(0px, 0px, 50px);
+}
+
+/* --- Custom Early Access Button (Uiverse) --- */
+.btn-early-access {
+  --clr: #0a0a0a;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--clr);
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  padding-left: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-icon-wrapper {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  color: var(--clr);
+  background-color: #ADE1ED;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.btn-early-access:hover {
+  background-color: #000;
+  transform: translateY(-1px);
+}
+
+.btn-early-access:hover .btn-icon-wrapper {
+  color: #000;
+  background-color: #fff;
+}
+
+.btn-icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, -100%);
+}
+
+.btn-early-access:hover .btn-icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, 100%);
+}
+
+.btn-early-access:hover .btn-icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
