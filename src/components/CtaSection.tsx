@@ -16,6 +16,12 @@ const CtaSection = () => {
     setError("");
 
     try {
+      if (!supabase) {
+        console.warn("Supabase not configured, skipping save.");
+        setSubmitted(true);
+        return;
+      }
+
       const { error: supabaseError } = await supabase
         .from("waitlist")
         .insert([{ email }]);
